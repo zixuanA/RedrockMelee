@@ -1,6 +1,6 @@
 package framework;
 
-public abstract class Weapon {
-    //返回造成的伤害
-    abstract int onAttack(AttackAble target);
+abstract class Weapon implements IWeapon{
+    //处理造成伤害的逻辑
+    abstract void onAttack(AttackAble target);
 }

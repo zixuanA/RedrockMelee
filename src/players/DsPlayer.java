@@ -1,7 +1,6 @@
 package players;
 
-import framework.AbstractPlayer;
-import framework.Environment;
+import framework.*;
 
 public class DsPlayer extends AbstractPlayer {
     @Override
@@ -10,9 +9,10 @@ public class DsPlayer extends AbstractPlayer {
     }
 
     @Override
-    public void onRound(Environment around,playerpackage) {
+    protected void onRound(Environment around, CommandManager commandManager, PackageManager packageManager) {
 
     }
+
 
     @Override
     public String getPlayerName() {

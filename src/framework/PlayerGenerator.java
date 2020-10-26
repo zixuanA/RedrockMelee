@@ -6,6 +6,7 @@ import java.util.Objects;
 
 class PlayerGenerator {
     private static final String PLAYER_FILE_PATH = "src/players";
+    private static final String PACKAGE_NAME_PREFIX  = "src.players.";
     public ArrayList<AbstractPlayer> generate() {
         ArrayList<AbstractPlayer> players = new ArrayList<>();
         File playerFile = new File(PLAYER_FILE_PATH);

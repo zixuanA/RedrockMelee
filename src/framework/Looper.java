@@ -7,6 +7,8 @@ class Looper {
     }
 
     public void loop() {
-
+        while (!PlayerManagerService.getInstance().isMoreThanOnePlayers()) {
+            PlayerManagerService.getInstance().onRound();
+        }
     }
 }

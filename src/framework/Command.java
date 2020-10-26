@@ -15,6 +15,11 @@ public abstract class Command {
     }
 
     public static Command generateAttackCommand() {
+        return new Command(){
+            @Override
+            public void action(PlayerManagerService playerManagerService) {
 
+            }
+        };
     }
 }

@@ -29,15 +29,17 @@ class PlayerManagerService {
     }
 
     public boolean isMoreThanOnePlayers() {
-
-        if (alivePlayers.size() > 1)return true;
+        if (alivePlayers.size() > 1) return true;
         else return false;
+    }
+
+    public void onRound() {
+        //TODO 每一个回合的运行逻辑
     }
 
     void attack(AbstractPlayer initiator, AbstractPlayer target) {
 
-        System.out.println(initiator.getPlayerName() + initiator.getPlayerStuNum() + "对" + target.getPlayerName() + target.getPlayerStuNum()
-                + "造成了" + playerMap.get(initiator).getWeapon().onAttack(playerMap.get(target)) + "伤害");
+
 
 
     }
