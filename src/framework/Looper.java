@@ -9,6 +9,7 @@ class Looper {
     public void loop() {
         while (!PlayerManagerService.getInstance().isMoreThanOnePlayers()) {
             PlayerManagerService.getInstance().onRound();
+            System.out.println("回合结束");
         }
     }
 }

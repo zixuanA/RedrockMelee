@@ -1,6 +1,6 @@
 package framework;
 
-public class Environment {
+public class Context {
 
     public void pickProp(){
 

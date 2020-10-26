@@ -1,6 +1,7 @@
 package framework;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 class PlayerManagerService {
@@ -34,17 +35,31 @@ class PlayerManagerService {
     }
 
     public void onRound() {
+        Collections.shuffle(alivePlayers);
+        for(int i = 0 ; i < alivePlayers.size() ; i++){
+
+        }
+        for(int i = alivePlayers.size() - 1 ; i >= 0 ; i--){
+            if(alivePlayers.get(i).getHP() <= 0){
+                alivePlayers.remove(i);
+            }
+        }
         //TODO 每一个回合的运行逻辑
+    }
+
+    public void removePlayerIfHPIsEmpty(PlayerRecord playerRecord) {
+        if (playerRecord == null) return;
+        if (playerRecord.getHP() <= 0) {
+            alivePlayers.remove(playerRecord);
+        }
     }
 
     void attack(AbstractPlayer initiator, AbstractPlayer target) {
 
 
-
-
     }
 
     int getBlood(AbstractPlayer player) {
-        return playerMap.get(player).getBlood();
+        return playerMap.get(player).getHP();
     }
 }

@@ -22,4 +22,13 @@ public abstract class Command {
             }
         };
     }
+
+    public static Command generateUsePropCommand(){
+        return new Command() {
+            @Override
+            public void action(PlayerManagerService playerManagerService) {
+
+            }
+        }
+    }
 }

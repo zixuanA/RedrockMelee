@@ -9,7 +9,7 @@ public class DsPlayer extends AbstractPlayer {
     }
 
     @Override
-    protected void onRound(Environment around, CommandManager commandManager, PackageManager packageManager) {
+    protected void onRound(Context around, CommandManager commandManager, PackageManager packageManager) {
 
     }
 

@@ -4,7 +4,7 @@ public abstract class AbstractPlayer {
 
     protected abstract void beforeRound();
 
-    protected abstract void onRound(Environment around, CommandManager commandManager, PackageManager packageManager);
+    protected abstract void onRound(Context around, CommandManager commandManager, PackageManager packageManager);
 
     public abstract String getPlayerName();
 
