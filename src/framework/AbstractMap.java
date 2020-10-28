@@ -1,11 +1,16 @@
 package framework;
 
-public abstract class AbstractMap {
-    public abstract void move(AbstractPlayer player, Direction direction) throws MoveToWrongGridException;
 
-    public abstract Context getAroundEnvironment(AbstractPlayer player);
+abstract class AbstractMap {
+    //TODO map的具体实现，需要完成对grid中的毒的调整。
+    public abstract void move(AbstractPlayer player, Direction direction);
 
-    public enum Direction{
-        left,right,top,down,none
+    public abstract Context getContext(AbstractPlayer player);
+
+    abstract public Grid getGrid(AbstractPlayer abstractPlayer);
+    public enum Direction {
+        left, right, top, down, none
     }
+
+    abstract public int[] getCoordinate(AbstractPlayer abstractPlayer);
 }

@@ -3,13 +3,9 @@ package players;
 import framework.*;
 
 public class DsPlayer extends AbstractPlayer {
-    @Override
-    public void beforeRound() {
-
-    }
 
     @Override
-    protected void onRound(Context around, CommandManager commandManager, PackageManager packageManager) {
+    protected void onRound(Context around, PlayerCommandManager playerCommandManager, PlayerPackageManager playerPackageManager) {
 
     }
 

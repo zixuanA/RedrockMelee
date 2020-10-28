@@ -1,15 +1,10 @@
 package framework;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 class PlayerManagerService {
     private static PlayerManagerService playerManagerService;
-
     private HashMap<AbstractPlayer, PlayerRecord> playerMap = new HashMap<>();
-
-    private ArrayList<PlayerRecord> alivePlayers = new ArrayList<>();
 
     private PlayerManagerService() {
     }
@@ -26,40 +21,42 @@ class PlayerManagerService {
     }
 
     public void addPlayers(ArrayList<AbstractPlayer> players) {
-        //TODO 将添加的AbstractPlayers生成对应的PlayerRecord，并同时添加到playerMap,和alivePlayer中
+        for(AbstractPlayer player:players){
+            playerMap.put(player, new PlayerRecord(player, new PlayerPackageManager(player)));
+        }
     }
 
     public boolean isMoreThanOnePlayers() {
-        if (alivePlayers.size() > 1) return true;
+        if (playerMap.values().size() > 1) return true;
         else return false;
     }
 
     public void onRound() {
+        List<PlayerRecord> alivePlayers = new ArrayList<>(List.copyOf(playerMap.values()));
         Collections.shuffle(alivePlayers);
-        for(int i = 0 ; i < alivePlayers.size() ; i++){
+        for (PlayerRecord player : alivePlayers) {
+            player.getAbstractPlayer().onRound(MapManagerService.getInstance().getContext(player.getAbstractPlayer()),
+                    CommandManagerService.getInstance().getPlayerCommandManager(player.getAbstractPlayer()),
+                    PackageManagerService.getInstance().getPlayerPackageManager(player.getAbstractPlayer()));
 
+            CommandManagerService.getInstance().doCommand(player.getAbstractPlayer());
         }
-        for(int i = alivePlayers.size() - 1 ; i >= 0 ; i--){
-            if(alivePlayers.get(i).getHP() <= 0){
+        for (int i = alivePlayers.size() - 1; i >= 0; i--) {
+            if (alivePlayers.get(i).getHP() <= 0) {
                 alivePlayers.remove(i);
             }
-        }
-        //TODO 每一个回合的运行逻辑
-    }
-
-    public void removePlayerIfHPIsEmpty(PlayerRecord playerRecord) {
-        if (playerRecord == null) return;
-        if (playerRecord.getHP() <= 0) {
-            alivePlayers.remove(playerRecord);
         }
     }
 
     void attack(AbstractPlayer initiator, AbstractPlayer target) {
 
+        PackageManagerService.getInstance().getPlayerPackageManager(initiator)
+                .getWeapon().onAttack(playerMap.get(initiator), playerMap.get(target));
 
     }
 
     int getBlood(AbstractPlayer player) {
         return playerMap.get(player).getHP();
     }
+
 }

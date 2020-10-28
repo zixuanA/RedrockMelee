@@ -2,34 +2,33 @@ package framework;
 
 import java.util.ArrayList;
 
-class PlayerRecord implements AttackAble {
+class PlayerRecord {
     private int HP = 100;
-
     private AbstractPlayer player;
-    private PackageManager packageManager;
     private ArrayList<BloodChangeListener> bloodChangeListeners = new ArrayList<>();
-    private Weapon weapon;
 
-    public PlayerRecord(AbstractPlayer player, PackageManager packageManager) {
+
+    public PlayerRecord(AbstractPlayer player, PlayerPackageManager playerPackageManager) {
         this.player = player;
-        this.packageManager = packageManager;
+    }
+
+    public AbstractPlayer getAbstractPlayer() {
+        return player;
     }
 
     public int getHP() {
         return HP;
     }
 
-    public Weapon getWeapon() {
-        return weapon;
-    }
+
 
 
     public void addBloodChangeListener(BloodChangeListener listener) {
         bloodChangeListeners.add(listener);
     }
 
-    @Override
     public void attacked(int damage) {
+        if (damage <= 0) return;
         HP -= damage;
     }
 
