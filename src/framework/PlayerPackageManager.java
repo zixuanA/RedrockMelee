@@ -3,7 +3,7 @@ package framework;
 import java.util.ArrayList;
 import java.util.List;
 
-class PlayerPackageManager {
+public class PlayerPackageManager {
     private AbstractPlayer abstractPlayer;
     private int idleCapacity = 100;
     private Weapon weapon = new LazyFishWeapon();
