@@ -36,10 +36,7 @@ class PlayerManagerService {
         Collections.shuffle(alivePlayers);
         for (PlayerRecord player : alivePlayers) {
             player.getAbstractPlayer().onRound(MapManagerService.getInstance().getContext(player.getAbstractPlayer()),
-                    CommandManagerService.getInstance().getPlayerCommandManager(player.getAbstractPlayer()),
                     PackageManagerService.getInstance().getPlayerPackageManager(player.getAbstractPlayer()));
-
-            CommandManagerService.getInstance().doCommand(player.getAbstractPlayer());
         }
         for (int i = alivePlayers.size() - 1; i >= 0; i--) {
             if (alivePlayers.get(i).getHP() <= 0) {

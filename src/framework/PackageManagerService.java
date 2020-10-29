@@ -10,7 +10,7 @@ class PackageManagerService {
 
     public static PackageManagerService getInstance() {
         if (packageManagerService == null) {
-            synchronized (CommandManagerService.class) {
+            synchronized (PackageManagerService.class) {
                 if (packageManagerService == null) {
                     packageManagerService = new PackageManagerService();
                 }

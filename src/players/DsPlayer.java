@@ -5,7 +5,7 @@ import framework.*;
 public class DsPlayer extends AbstractPlayer {
 
     @Override
-    protected void onRound(Context around, PlayerCommandManager playerCommandManager, PlayerPackageManager playerPackageManager) {
+    protected void onRound(Context around, PlayerPackageManager playerPackageManager) {
 
     }
 
