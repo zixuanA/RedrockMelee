@@ -1,5 +1,7 @@
 package framework;
 
+import java.util.List;
+
 class MapManagerService {
     private static MapManagerService mapManagerService;
     AbstractMap abstractMap;
@@ -43,11 +45,16 @@ class MapManagerService {
             throw new TargetIsAlreadyPickedException();
         }
     }
-    public void tryToPickWeapon(AbstractPlayer abstractPlayer, Weapon weapon) throws TargetIsAlreadyPickedException{
+
+    public void tryToPickWeapon(AbstractPlayer abstractPlayer, Weapon weapon) throws TargetIsAlreadyPickedException {
         if (abstractMap.getGrid(abstractPlayer).getWeapons().contains(weapon)) {
             abstractMap.getGrid(abstractPlayer).getWeapons().remove(weapon);
         } else {
             throw new TargetIsAlreadyPickedException();
         }
+    }
+
+    public void addPlayers(List<AbstractPlayer> abstractPlayers){
+        abstractMap.addPlayers(abstractPlayers);
     }
 }
